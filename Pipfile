@@ -12,6 +12,9 @@ soundfile = "*"
 llvmlite = "*"
 librosa = "*"
 pandas = "*"
+firebase = "*"
+python-jwt = "*"
+gcloud = "*"
 
 [requires]
 python_version = "3.8"
