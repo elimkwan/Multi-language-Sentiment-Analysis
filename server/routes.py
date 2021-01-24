@@ -12,24 +12,12 @@ firebase_admin.initialize_app()
 db = firestore.client()
 storage = storage.bucket("alpaca-72130.appspot.com")
 
-# @app.route('/')
-# @app.route('/index') #www.alapaca.com/index
-# def index():
-#     #load the audio file fromt the data base
-#     blob = storage.blob("audio_recordings/urdu.wav")
-#     blob.download_to_filename("test.wav")
-#     sentiment_ans = analyse("./test.wav", "./Sentiment/ada_classifier.model")
-#     #upload it to database
-#     try:
-#         db.collection(u'sentiment').add({'sentiment':sentiment_ans})
-#         return "Completed request"
-#     except Exception as e:
-#         print(e)
-#         return 'Could not make request'
-
-
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET','POST'])
 def index():
+    return "hello"
+
+@app.route('/sentimentanalysis', methods=['GET','POST'])
+def sentimentanalysis():
     if request.method == 'POST':
         req = request.get_json()
         user_id = req["user_id"]
@@ -37,28 +25,21 @@ def index():
         blob = storage.blob(path)
         blob.download_to_filename("/tmp/test.ogg")
 
-        value = analyse("/tmp/ogg.wav", "./Sentiment/ada_classifier.model")
+        value = analyse("/tmp/test.ogg", "./Sentiment/ada_classifier.model")
+        print("Result of sentiment analysis: ", value)
         if value is not None:
             data = {
                 "sentiment": value,
                 "user_id": user_id
             }
             # Change url to command
-            # res = requests.post('http://localhost:5000/test', json=data)
-            # return res.text
-            #upload it to database
-            try:
-                db.collection(u'sentiment').add(data)
-                return "Completed request"
-            except Exception as e:
-                print(e)
-                return 'Could not make request'
-
+            res = requests.post('http://localhost:5000/saresults', json=data)
+            return res.text
     else:
         return "ERROR"
     return "OK"
 
-# @app.route('/test', methods=['GET', 'POST'])
-# def test():
-#     return "Received"
+@app.route('/saresults', methods=['GET', 'POST'])
+def saresults():
+    return "Received"
                 

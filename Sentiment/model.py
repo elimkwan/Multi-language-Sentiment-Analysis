@@ -45,3 +45,6 @@ def analyse(audio_path, model_path):
         return out
     else:
         return "None"
+
+
+# print(analyse("./rec3.ogg","./ada_classifier.model"))

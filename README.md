@@ -13,8 +13,8 @@ E.g: `pipenv install <library-name>`
 #### Run development server
 Run `sh startlocal.sh` in top level directory
 
-##### POST request
+##### POST Request Locally
 ```bash
-curl -X POST -H 'Content-Type: application/json' -d '{"path": "audio_recrec3.ogg", "user_id": 100}' localhost:5000/
+curl -X POST -H 'Content-Type: application/json' -d '{"path": "audio_recordings/rec3.ogg", "user_id": 100}' localhost:5000/
 ```
 
