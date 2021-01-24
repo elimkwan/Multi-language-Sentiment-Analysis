@@ -1,3 +1,22 @@
+Sentiment analysis (tone analysis) for voice note data. Details of the training and the models are at `./Sentiment/Preparations/training.ipynb`.
+
+Models:
+- CNN
+- Ada Boost
+- Random Forest
+
+## Dependencies (for model training)
+```
+Python 3.8
+numpy
+Cython
+librosa
+SoundFile
+pandas
+tensorflow
+```
+
+## Deployment Details
 ##### Required installs:
 `docker`
 
