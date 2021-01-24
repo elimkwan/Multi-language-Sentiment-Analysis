@@ -34,10 +34,14 @@ def analyse(audio_path, model_path):
     # load the model from disk
     loaded_model = pickle.load(open(model_path, 'rb'))
 
+    arr = []
     for file in glob.glob(audio_path):
         features = extract_feature(file, mfcc=True, chroma=True, mel=True)
-        
-    ans = loaded_model.predict([features])
+        arr.append(features)
     
-    out = "positive" if ans[0] == 1 else "negative"
-    return out
+    if len(arr) > 0:
+        ans = loaded_model.predict([arr[0]])
+        out = "positive" if ans[0] == 1 else "negative"
+        return out
+    else:
+        return "None"
