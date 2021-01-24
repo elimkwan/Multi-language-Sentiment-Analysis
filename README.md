@@ -1,4 +1,4 @@
-Sentiment analysis (tone analysis) for voice note data. Details of the training and the models are at `./Sentiment/Preparations/training.ipynb`.
+Sentiment analysis for voice note data. Uses tone analysis to allievate language constraints. Designed with 24h for Hex Cambridge 2021. (Link: https://devpost.com/software/gecko) Details of the training and the models are at `./Sentiment/Preparations/training.ipynb`.
 
 Models:
 - CNN
